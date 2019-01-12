@@ -72,6 +72,9 @@ export class ChatPage {
   // }
 
   joinRoom(key) {
+    console.log("key :");
+    console.log(key);
+
     this.navCtrl.setRoot(ConversationPage, {
       key:key,
       nickname:this.navParams.get("nickname")

@@ -91,7 +91,7 @@ export class OverviewPage {
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
-    }
+    };
 
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
@@ -100,7 +100,7 @@ export class OverviewPage {
       console.log(imageData);
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      this.animal._attachments["camera-"+this.date] = {"content_type": this.type, "data": base64Image};
+      this.animal._attachments["camera-"+this.date] = {"content_type": "image/jpeg", "data": base64Image};
       this.aniProv.update(this.animal).then(() => {
         let p = new Promise(resolve => setTimeout(resolve, 2000));
         p.then(() => {

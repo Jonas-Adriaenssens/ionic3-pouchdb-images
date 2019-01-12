@@ -104,7 +104,7 @@ export class HomePage {
   }
 
   goToChat(){
-    this.navCtrl.setRoot(this.chatPage, {id: this.id});
+    this.navCtrl.setRoot(this.chatPage, {id:this.id , nickname: this.id});
   }
 
   goToOverview(){

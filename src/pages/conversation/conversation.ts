@@ -23,10 +23,16 @@ export class ConversationPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    console.log("constructor loading")
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
     this.data.type = 'message';
     this.data.nickname = this.nickname;
+    console.log(this.roomkey);
+    console.log(this.nickname);
+    console.log(this.data.type);
+    console.log(this.data.nickname);
+
 
     let joinData = firebase.database().ref('chatrooms/'+this.roomkey+'/chats').push();
     joinData.set({
