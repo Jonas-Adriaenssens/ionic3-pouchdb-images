@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import PouchDB from 'pouchdb';
 import PouchDBFind from 'pouchdb-find';
@@ -25,7 +25,7 @@ export class AnimalProvider {
     this.pdb.sync(this.remote, options);
   }
 
-  constructor(public http: HttpClient){
+  constructor(public http: HttpClient) {
     PouchDB.plugin(PouchDBFind);
   }
 
@@ -46,29 +46,28 @@ export class AnimalProvider {
 
     function allDocs() {
 
-      let _animals = pdb.allDocs({ include_docs: true })
+      let _animals = pdb.allDocs({include_docs: true})
         .then(docs => {
           return docs.rows;
         });
-      ;
+
 
       return Promise.resolve(_animals);
-    };
+    }
 
     return allDocs();
   }
 
-  getMatchedAnimals(id, findMatchesPromise){
+  getMatchedAnimals(id, findMatchesPromise) {
     let pdb = this.pdb;
 
-    return findMatchesPromise.then(function(result){
+    return findMatchesPromise.then(function (result) {
       let matchedId: any = [];
 
-      for(let match of result.docs){
-        if(match.animalId1 == id){
+      for (let match of result.docs) {
+        if (match.animalId1 == id) {
           matchedId.push(match.animalId2);
-        }
-        else {
+        } else {
           matchedId.push(match.animalId1);
         }
       }
@@ -80,18 +79,17 @@ export class AnimalProvider {
     });
   }
 
-  getAnimalRandomBatch(id, seenIdsPromise, seenIds, range, animal){
+  getAnimalRandomBatch(id, seenIdsPromise, seenIds, range, animal) {
 
-    let randomBatchPromise:any;
+    let randomBatchPromise: any;
     let pdb = this.pdb;
 
-    randomBatchPromise = seenIdsPromise.then(function(result){
+    randomBatchPromise = seenIdsPromise.then(function (result) {
       let answeredIds: any = [];
-      for(let seen of result.docs){
-        if(seen.animalId1 == id && typeof seen.match1 != 'undefined'){
+      for (let seen of result.docs) {
+        if (seen.animalId1 == id && typeof seen.match1 != 'undefined') {
           answeredIds.push(seen.animalId2);
-        }
-        else if(seen.animalId2 == id && typeof seen.match2 != 'undefined'){
+        } else if (seen.animalId2 == id && typeof seen.match2 != 'undefined') {
           answeredIds.push(seen.animalId1);
         }
       }
@@ -100,19 +98,21 @@ export class AnimalProvider {
       let rand = Math.random();
 
       let upper = rand + range;
-      let lower= rand - range;
+      let lower = rand - range;
       let _randomBatchPromise;
 
-      if(upper > 1) {
+      if (upper > 1) {
         _randomBatchPromise = pdb.find({
           selector: {
-            $and:[
+            $and: [
               {_id: {$ne: id}},
               {_id: {$nin: answeredIds}},
-              {$or: [
-                {random: {$gte: lower}},
-                {random: {$lte: upper-1}}
-              ]},
+              {
+                $or: [
+                  {random: {$gte: lower}},
+                  {random: {$lte: upper - 1}}
+                ]
+              },
               {random: {$gt: 0}}, //hack to select it
               // lookingfor: {$elemMatch: animal.gender},
               {gender: {$in: animal.lookingfor}},
@@ -120,23 +120,24 @@ export class AnimalProvider {
               {age: {$lte: animal.maxAge}},
               {minAge: {$lte: animal.age}},
               {maxAge: {$gte: animal.age}}
-          ],
+            ],
 
           },
           limit: 5,
           // sort: ['random']
         });
-      }
-      else if(lower < 0) {
+      } else if (lower < 0) {
         _randomBatchPromise = pdb.find({
           selector: {
-            $and:[
+            $and: [
               {_id: {$ne: id}},
               {_id: {$nin: answeredIds}},
-              {$or: [
-                {random: {$gte: lower + 1}},
-                {random: {$lte: upper}}
-            ]},
+              {
+                $or: [
+                  {random: {$gte: lower + 1}},
+                  {random: {$lte: upper}}
+                ]
+              },
               {random: {$gt: 0}}, //hack to select it
               // lookingfor: {$elemMatch: animal.gender},
               {gender: {$in: animal.lookingfor}},
@@ -149,8 +150,7 @@ export class AnimalProvider {
           limit: 5,
           // sort: ['random']
         });
-      }
-      else {
+      } else {
         _randomBatchPromise = pdb.find({
           selector: {
             $and: [
@@ -176,15 +176,16 @@ export class AnimalProvider {
     return randomBatchPromise;
   }
 
-  findAnimalById(id){
+  findAnimalById(id) {
     return this.pdb.find({
-      selector:{ _id: id}
+      selector: {_id: id}
     });
   }
 
-  findAnimalByName(name){
+  findAnimalByName(name) {
     return this.pdb.find({
-      selector:{name: name}
+      selector: {name: name}
     });
   }
+
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, ModalController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, ModalController} from 'ionic-angular';
 import {AnimalProvider} from "../../providers/animals/animals";
 import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
@@ -21,7 +21,7 @@ export class LoginPage {
   name: string;
   password: string;
 
-  animal:any;
+  animal: any;
 
   constructor(
     public navCtrl: NavController,
@@ -31,24 +31,28 @@ export class LoginPage {
   }
 
 
-
-  login(){
+  login() {
     this.aniProv.findAnimalByName(this.name).then((result) => {
-      if(result.docs.length == 1){
+      if (result.docs.length == 1) {
         this.animal = result.docs[0];
-        this.goToHomepage(this.animal._id);
-              }
+        console.log("animal: ");
+        console.log(this.animal);
+        if (this.password === this.animal.password) {
+          this.goToHomepage(this.animal._id);
+        }
+        //:TODO else => error passowrd doesnt match
+      }
+      //:TODO else => user not found
     });
   }
 
-  goToHomepage(id){
+  goToHomepage(id) {
     return this.navCtrl.setRoot(this.homepage, {id: id});
   }
 
-  register(){
+  register() {
     return this.navCtrl.setRoot(this.registerpage);
   }
-
 
 
 }
