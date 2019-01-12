@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='returnToOverview()'>
+              <ion-icon name='arrow-back'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <h2>Settings</h2>
+        </ion-col>
+
+        <ion-col>
+
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <h3>Change password:</h3>
+    <ion-item>
+      <ion-label>New password:</ion-label>
+      <ion-input type="password" (change)="onPasswordChange()" [(ngModel)]="newPassword" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Repeat password:</ion-label>
+      <ion-input type="password" (change)="onPasswordChange()" [(ngModel)]="repeatNewPassword" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Old password:</ion-label>
+      <ion-input type="password" [(ngModel)]="oldPassword" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <br/>
+
+    <ion-buttons>
+      <button ion-button (click)="changePassword()">
+        Change Password
+      </button>
+    </ion-buttons>
+
+    <p *ngIf="oldPassNotMatched" style="color: red;">Old password not correct</p>
+    <p *ngIf="passwordsNotEqual" style="color: red">Passwords not equal</p>
+  </div>
+
+  <br/>
+
+  <div>
+    <h3>Preferences:</h3>
+    <ion-item>
+      <ion-label>I am looking for:</ion-label>
+      <ion-select required placeholder="{{lookingfor}}" [(ngModel)]="lookingfor" multiple="true">
+        <ion-option value="Dog">Dog</ion-option>
+        <ion-option value="Cat">Cat</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <br/>
+
+    <ion-item>
+      <ion-label>Minimum age:</ion-label>
+      <ion-input min="1" max="{{maxAge}}" type="number" (change)="onPrefChange()" placeholder="{{minAge}}" [(ngModel)]="minAge"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Maximum age:</ion-label>
+      <ion-input min="{{minAge}}" max="20" type="number" (change)="onPrefChange()" placeholder="{{maxAge}}" [(ngModel)]="maxAge"></ion-input>
+    </ion-item>
+
+    <br/>
+
+    <ion-buttons>
+      <button ion-button (click)="changePreferences()">
+        Change Preferences
+      </button>
+    </ion-buttons>
+
+    <p *ngIf="ageRangeNotPossible" style="color: red">Age range not correct</p>
+  </div>
+
+
+</ion-content>
+

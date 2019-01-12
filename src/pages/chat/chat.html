@@ -1,0 +1,78 @@
+<ion-header>
+  <!--<ion-navbar>-->
+  <!--<ion-grid>-->
+  <!--<ion-row>-->
+
+  <!--<ion-col>-->
+  <!--<ion-buttons>-->
+  <!--<button ion-button (click)="goToHome()">-->
+  <!--<ion-icon name='md-flame'></ion-icon>-->
+  <!--</button>-->
+  <!--</ion-buttons>-->
+  <!--</ion-col>-->
+
+  <!--<ion-col>-->
+  <!--<ion-buttons>-->
+  <!--<ion-icon name='ios-chatbubbles'></ion-icon>-->
+  <!--</ion-buttons>-->
+  <!--</ion-col>-->
+
+  <!--<ion-col>-->
+  <!--</ion-col>-->
+  <!--</ion-row>-->
+  <!--</ion-grid>-->
+  <!--</ion-navbar>-->
+
+
+  <ion-navbar>
+
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)="goToHome()">
+              <ion-icon name='md-flame'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <ion-buttons>
+            <ion-icon name='ios-chatbubbles'></ion-icon>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <ion-buttons end>
+            <button ion-button icon-only (click)="addRoom()">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <!--<ion-list>-->
+    <!--<ion-item *ngFor='let animal of matchedAnimals'>-->
+    <!--<h3>{{animal.name}}</h3>-->
+    <!--</ion-item>-->
+    <!--</ion-list>-->
+
+    <ion-item *ngFor="let room of rooms">
+      {{room.roomname}}
+      <ion-icon name="chatboxes" item-end (click)="joinRoom(room.key)"></ion-icon>
+    </ion-item>
+
+
+
+  </ion-list>
+</ion-content>

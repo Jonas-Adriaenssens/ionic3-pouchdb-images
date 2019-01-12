@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='goToOverview()'>
+              <ion-icon name='person'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <ion-icon name='md-flame'></ion-icon>
+        </ion-col>
+
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='goToChat()'>
+              <ion-icon name='ios-chatbubbles'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div>
+    <ion-slides>
+      <ion-slide *ngFor="let url of attachmentsURLS">
+        <img src="{{url}}" (click)="goToProfile()">
+      </ion-slide>
+    </ion-slides>
+    <h3>{{getAnimalsOneByOneName()}}</h3>
+  </div>
+
+
+  <!--<div>-->
+    <!--<img (click)="goToProfile()" src="{{getAnimalOneByOnePicture()}}"/>-->
+    <!--<h3>{{getAnimalsOneByOneName()}}</h3>-->
+  <!--</div>-->
+
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)="answered(false)">
+              <ion-icon name='md-trash'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)="answered(true)">
+              <ion-icon name='md-checkmark'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

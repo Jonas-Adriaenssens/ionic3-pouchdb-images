@@ -1,0 +1,76 @@
+<ion-header>
+  <h1>ANIMALTINDER</h1>
+  <h2>Find a friend!</h2>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Name:</ion-label>
+      <ion-input type="text" (change)="onNameChange()" [(ngModel)]="name" placeholder="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password:</ion-label>
+      <ion-input type="password" (change)="onPasswordChange()" [(ngModel)]="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Repeat Password:</ion-label>
+      <ion-input type="password"(change)="onPasswordChange()" [(ngModel)]="repeatPassword" placeholder="Repeat Password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Age:</ion-label>
+      <ion-input type="number" [(ngModel)]="age" placeholder="Age"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>I am a:</ion-label>
+      <ion-select [(ngModel)]="gender">
+        <ion-option value="Dog">Dog</ion-option>
+        <ion-option value="Cat">Cat</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >I am looking for:</ion-label>
+      <ion-select [(ngModel)]="lookingfor" multiple="true">
+        <ion-option value="Dog">Dog</ion-option>
+        <ion-option value="Cat">Cat</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Profile Picture</ion-label>
+      <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
+    </ion-item>
+
+  <br/>
+
+    <!--<ion-buttons>-->
+      <!--<button (click)="selectImage()">-->
+        <!--Select image-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
+
+    <!--<br/>-->
+
+    <ion-buttons>
+      <button (click)="register()">
+        Register
+      </button>
+    </ion-buttons>
+    <br/>
+
+
+
+  </ion-list>
+
+  <div>
+    <p *ngIf="nameTaken" style="color: red">Name taken - please choose another name</p>
+    <p *ngIf="passNotMatched" style="color: red">Password doesn' match - please check password</p>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+  <h1>ANIMALTINDER</h1>
+  <h2>Find a friend!</h2>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="name" placeholder="Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+    <br/>
+    <ion-buttons>
+      <button ion-button (click)="login()">
+        LOGIN
+      </button>
+    </ion-buttons>
+
+    <br/>
+
+    <ion-buttons>
+      <button ion-button (click)="register()">
+        Registreer
+      </button>
+    </ion-buttons>
+  </ion-list>
+
+
+</ion-content>

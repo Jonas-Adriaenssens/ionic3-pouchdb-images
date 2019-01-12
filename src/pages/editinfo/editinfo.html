@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='returnToOverview()'>
+              <ion-icon name='arrow-back'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <h2>Edit Info</h2>
+        </ion-col>
+
+        <ion-col>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row *ngFor="let url of attachmentsURLS">
+      <ion-col>
+        <img src="{{url}}"/>
+      </ion-col>
+      <ion-col>
+        <ion-buttons>
+          <button ion-button (click)="deletePicture(url)">DELETE</button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item>
+    <ion-label>Profile Picture</ion-label>
+    <ion-input type="file" (change)="onFileSelected($event)"></ion-input>
+  </ion-item>
+
+  <ion-buttons>
+    <button ion-button (click)='addPicture()'>
+      Add picture
+    </button>
+  </ion-buttons>
+
+  <br/>
+
+  <ion-item>
+    <ion-textarea placeholder="{{description}}" [(ngModel)]="description"></ion-textarea>
+  </ion-item>
+
+  <br/>
+
+  <ion-buttons>
+    <button ion-button (click)='saveDescription()' >
+      Save
+    </button>
+  </ion-buttons>
+
+</ion-content>
+

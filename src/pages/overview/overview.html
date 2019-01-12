@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+
+        </ion-col>
+
+        <ion-col>
+          <ion-icon name='person'></ion-icon>
+        </ion-col>
+
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='goToHome()'>
+              <ion-icon name='md-flame'></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-slides>
+      <ion-slide *ngFor="let url of attachmentsURLS">
+        <img src="{{url}}">
+      </ion-slide>
+    </ion-slides>
+    <h3>{{getNameAndAge()}}</h3>
+    <p>{{getDescription()}}</p>
+  </div>
+
+  <div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='GoToSettings()'>
+              <ion-icon name="settings"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='OpenCamera()'>
+              <ion-icon name="camera"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <ion-buttons>
+            <button ion-button (click)='GoToEditProfile()'>
+              <ion-icon name="brush"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>
