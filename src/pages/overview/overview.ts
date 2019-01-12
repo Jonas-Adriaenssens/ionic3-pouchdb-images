@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {DateTime, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {SettingsPage} from "../settings/settings";
 import {EditinfoPage} from "../editinfo/editinfo";
@@ -16,7 +16,7 @@ import {Camera, CameraOptions} from "@ionic-native/camera";
 })
 export class OverviewPage {
 
-
+  date: any = new Date();
   id:any;
   animal:any;
   imgName;
@@ -96,31 +96,17 @@ export class OverviewPage {
     this.camera.getPicture(options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
+      console.log("image");
+      console.log(imageData);
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-
-      //TODO: geef image door naar database
-
-      // this.animal._attachments[this.imgName] = {"content_type": this.type, "data": this.imgData};
-      // this.aniProv.update(this.animal).then(() => {
-      //   let p = new Promise( resolve => setTimeout(resolve, 2000) );
-      //   p.then(() => {
-      //     this.navCtrl.setRoot(this.overviewpage, {id: this.id});
-      //   });
-      // });
-      //
-
-
-
-
-        // this.animal._attachments[this.imgName] = {"content_type": this.type, "data": this.imgData};
-        // this.aniProv.update(this.animal).then(() => {
-        //   let p = new Promise(resolve => setTimeout(resolve, 2000));
-        //   p.then(() => {
-        //     this.refreshPage();
-        //   });
-        // });
-
+      this.animal._attachments["camera-"+this.date] = {"content_type": this.type, "data": base64Image};
+      this.aniProv.update(this.animal).then(() => {
+        let p = new Promise(resolve => setTimeout(resolve, 2000));
+        p.then(() => {
+          this.navCtrl.setRoot(this.overviewpage, {id: this.id});
+        });
+      });
 
 
 
