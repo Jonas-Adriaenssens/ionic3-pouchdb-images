@@ -3,6 +3,12 @@ page-home {
 }
 
 
+
+ion-header *{
+  background-color: #cc0000 !important;
+}
+
+
 ion-col, h3, ion-slides{
   text-align: center;
 

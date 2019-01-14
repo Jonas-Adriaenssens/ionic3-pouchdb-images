@@ -22,11 +22,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div>
+<ion-content padding>
+  <div id="profielfoto">
     <ion-slides>
       <ion-slide *ngFor="let url of attachmentsURLS">
-        <img src="{{url}}">
+        <img id="imageprofile"   src="{{url}}">
       </ion-slide>
     </ion-slides>
     <h3>{{getNameAndAge()}}</h3>
@@ -35,7 +35,7 @@
 
   <div>
 
-    <ion-grid>
+    <ion-grid padding>
       <ion-row>
         <ion-col>
           <ion-buttons>
