@@ -11,7 +11,7 @@ export class EmployeeProvider {
 
   createPouchDB() {
     this.pdb = new PouchDB('employees');
-    this.remote = 'http://192.168.0.218:5984/animals';
+    this.remote = 'http://192.168.0.209:5984/animals';
 
     let options = {
       live: true,
