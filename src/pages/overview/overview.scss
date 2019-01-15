@@ -1,15 +1,50 @@
-page-home {
+page-overview {
+  height: 100%;
+
 
 }
+
+
 
 ion-grid{
   padding: 16px;
 }
 
-
-#profielfoto {
-  height: 400px;
-  margin-bottom: 30px;
-
+h3, p{
+  text-align: center;
 
 }
+
+
+
+.profielpics {
+  width: auto !important;
+  max-height: 400px !important;
+
+}
+
+.contain {
+  max-width: 100%;
+  // max-height: 60%;
+  float: left;
+  margin: 3px;
+  padding: 3px;
+  align-content: center;
+}
+
+/*
+
+#profielfoto {
+  height: 75%;
+  margin-bottom: 30px;
+}
+
+#imageprofle {
+  height: 100% !important;
+  width: auto !important;
+  background-size: cover;
+  resize: vertical !important;
+
+}
+
+*/
