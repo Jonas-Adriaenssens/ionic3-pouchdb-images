@@ -88,6 +88,7 @@ export class ChatPage {
 
     this.navCtrl.setRoot(ConversationPage, {
       key:key,
+      id:this.id,
       nickname:this.nickname
     });
   }

@@ -20,14 +20,16 @@ export class ConversationPage {
   roomkey:string;
   nickname:string;
   offStatus:boolean = false;
+  id:any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    console.log("constructor loading")
+    console.log("constructor loading");
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
     this.data.type = 'message';
     this.data.nickname = this.nickname;
+    this.id = this.navParams.get('id');
     console.log(this.roomkey);
     console.log(this.nickname);
     console.log(this.data.type);
@@ -75,7 +77,8 @@ export class ConversationPage {
     this.offStatus = true;
 
     this.navCtrl.setRoot(ChatPage, {
-      nickname:this.nickname
+      nickname:this.nickname,
+      id: this.id
     });
   }
 
