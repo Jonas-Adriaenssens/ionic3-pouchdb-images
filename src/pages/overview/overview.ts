@@ -7,8 +7,6 @@ import {ProfilePage} from "../profile/profile";
 import {normalizeURL} from "ionic-angular";
 import {AnimalProvider} from "../../providers/animals/animals";
 import {Camera, CameraOptions} from "@ionic-native/camera";
-import {runBuildUpdate} from "@ionic/app-scripts/dist/watch";
-import {getLocaleFirstDayOfWeek} from "@angular/common";
 
 
 @IonicPage()
@@ -145,7 +143,6 @@ export class OverviewPage {
             this.navCtrl.setRoot(this.overviewpage, {id: this.id});
           });
         });
-
 
 
 
