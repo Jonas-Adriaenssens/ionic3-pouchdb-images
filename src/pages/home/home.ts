@@ -7,6 +7,7 @@ import {normalizeURL} from "ionic-angular";
 import {MatchProvider} from "../../providers/matches/matches";
 import {ProfilePage} from "../profile/profile";
 
+
 @IonicPage()
 @Component({
   selector: 'page-home',

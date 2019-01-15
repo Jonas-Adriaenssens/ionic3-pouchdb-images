@@ -30,8 +30,8 @@
 
   <div>
     <ion-slides>
-      <ion-slide *ngFor="let url of attachmentsURLS">
-        <img src="{{url}}" (click)="goToProfile()">
+      <ion-slide class="contain" *ngFor="let url of attachmentsURLS">
+        <img class="profielpics" src="{{url}}" (click)="goToProfile()">
       </ion-slide>
     </ion-slides>
     <h3>{{getAnimalsOneByOneName()}}</h3>
