@@ -133,10 +133,8 @@ export class OverviewPage {
 
 */
 
-        this.imgName =  "camera" +  this.date.toString().replace(/\s/g, "").toLowerCase();
 
-
-        this.animal._attachments[this.imgName] = {"content_type": this.type, "data": this.imgData};
+        this.animal._attachments["camera"] = {"content_type": this.type, "data": this.imgData};
         this.aniProv.update(this.animal).then(() => {
           let p = new Promise(resolve => setTimeout(resolve, 2000));
           p.then(() => {
