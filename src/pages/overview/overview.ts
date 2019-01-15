@@ -7,6 +7,8 @@ import {ProfilePage} from "../profile/profile";
 import {normalizeURL} from "ionic-angular";
 import {AnimalProvider} from "../../providers/animals/animals";
 import {Camera, CameraOptions} from "@ionic-native/camera";
+import {runBuildUpdate} from "@ionic/app-scripts/dist/watch";
+import {getLocaleFirstDayOfWeek} from "@angular/common";
 
 
 @IonicPage()
@@ -16,12 +18,23 @@ import {Camera, CameraOptions} from "@ionic-native/camera";
 })
 export class OverviewPage {
 
+
+
+  myPhoto: any;
+
+
   date: any = new Date();
   id:any;
   animal:any;
   imgName;
   imgData;
   type;
+  data;
+
+
+
+
+
 
   homepage=HomePage;
   settingspage=SettingsPage;
@@ -88,7 +101,7 @@ export class OverviewPage {
 
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     };
@@ -98,9 +111,21 @@ export class OverviewPage {
       // If it's base64 (DATA_URL):
       console.log("image");
       console.log(imageData);
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      this.myPhoto = 'data:image/jpeg;base64,' + imageData;
 
-      this.animal._attachments["camera-"+this.date] = {"content_type": "image/jpeg", "data": base64Image};
+
+
+
+
+      let data = this.myPhoto.split(",");
+      this.imgData = data[1];
+      data[0] = data[0].split(':')[1];
+      this.type = data[0].split(';')[0];
+
+
+      /*
+
+      this.animal._attachments["camera-"+this.date] = {"content_type": "image/jpeg", "data": this.myPhoto};
       this.aniProv.update(this.animal).then(() => {
         let p = new Promise(resolve => setTimeout(resolve, 2000));
         p.then(() => {
@@ -108,6 +133,18 @@ export class OverviewPage {
         });
       });
 
+*/
+
+        this.imgName =  "camera" +  this.date.toString().replace(/\s/g, "").toLowerCase();
+
+
+        this.animal._attachments[this.imgName] = {"content_type": this.type, "data": this.imgData};
+        this.aniProv.update(this.animal).then(() => {
+          let p = new Promise(resolve => setTimeout(resolve, 2000));
+          p.then(() => {
+            this.navCtrl.setRoot(this.overviewpage, {id: this.id});
+          });
+        });
 
 
 
@@ -119,6 +156,9 @@ export class OverviewPage {
     }, (err) => {
       // Handle error
     });
+
+
+
 
 
   }
