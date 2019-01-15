@@ -7,6 +7,8 @@ import {AnimalProvider} from "../../providers/animals/animals";
 import * as firebase from 'Firebase';
 import {AddroomPage} from "../addroom/addroom";
 import {ConversationPage} from "../conversation/conversation";
+import {OverviewPage} from "../overview/overview";
+import {ProfilePage} from "../profile/profile";
 
 
 
@@ -28,7 +30,9 @@ export class ChatPage {
   id:any;
   rooms = [];
   ref = firebase.database().ref('chatrooms/');
-
+  index:any = 0;
+  animal;
+  nickname:any;
 
 
   constructor(
@@ -37,7 +41,14 @@ export class ChatPage {
     public matchProv: MatchProvider,
     public aniProv: AnimalProvider
   ) {
+    this.id = navParams.get('id');
+    console.log(this.id);
+    this.nickname = navParams.get('nickname');
+    console.log("wat is de naam die we verkrijgen");
+    console.log(this.nickname);
 
+
+    this.matchProv.createPouchDB();
     this.getMatchedAnimals();
     this.ref.on('value', resp => {
       this.rooms = [];
@@ -64,7 +75,7 @@ export class ChatPage {
   }
 
   goToHome(){
-    this.navCtrl.setRoot(this.homepage, {id: this.id});
+    this.navCtrl.setRoot(this.homepage, {id: this.id, nickname: this.id});
   }
 
   // GoToConversation() {
@@ -77,7 +88,7 @@ export class ChatPage {
 
     this.navCtrl.setRoot(ConversationPage, {
       key:key,
-      nickname:this.navParams.get("nickname")
+      nickname:this.nickname
     });
   }
 }
