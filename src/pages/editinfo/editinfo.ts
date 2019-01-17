@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { File } from '@ionic-native/file';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AnimalProvider} from "../../providers/animals/animals";
 import {OverviewPage} from "../overview/overview";
@@ -69,7 +70,7 @@ export class EditinfoPage {
       console.log(Object.keys(this.animal._attachments));
       for(let picture of Object.keys(this.animal._attachments)){
         // console.log(i);
-        console.log(picture);
+        console.log(this.imageUrl + picture);
         this.attachmentsURLS.push(this.imageUrl + picture) ;
       }
     }
@@ -88,10 +89,15 @@ export class EditinfoPage {
   addPicture() {
     this.animal._attachments[this.imgName] = {"content_type": this.type, "data": this.imgData};
     this.aniProv.update(this.animal).then(() => {
-      let p = new Promise(resolve => setTimeout(resolve, 3000));
-      p.then(() => {
-        this.refreshPage();
-      });
+      this.refreshPage();
+    });
+  }
+
+  imageError(){
+    console.log("image error");
+    let p = new Promise(resolve => setTimeout(resolve, 100));
+    p.then(() => {
+      this.refreshPage();
     });
   }
 

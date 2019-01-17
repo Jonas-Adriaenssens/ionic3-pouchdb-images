@@ -28,7 +28,7 @@
   <ion-grid>
     <ion-row *ngFor="let url of attachmentsURLS">
       <ion-col>
-        <img src="{{url}}"/>
+        <img src="{{url}}" (error)="imageError()"/>
       </ion-col>
       <ion-col>
         <ion-buttons>
