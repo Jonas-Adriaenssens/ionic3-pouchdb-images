@@ -31,6 +31,7 @@ export class LoginPage {
 
   login() {
     this.aniProv.findAnimalByName(this.name).then((result) => {
+      console.log(result);
       if (result.docs.length == 1) {
         this.animal = result.docs[0];
         console.log("animal: ");

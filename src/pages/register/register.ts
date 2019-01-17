@@ -101,7 +101,7 @@ export class RegisterPage {
         {
           "name": this.name,
           "password": this.password,
-          "age": this.age,
+          "age": Number(this.age),
           "gender": this.gender,
           "lookingfor": this.lookingfor,
           "minAge": 1,

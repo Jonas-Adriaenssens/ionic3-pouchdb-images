@@ -95,10 +95,14 @@ export class AnimalProvider {
       }
       answeredIds = Array.from(new Set(answeredIds.concat(seenIds)));
 
+      answeredIds.push(0);
+      console.log(answeredIds);
+      console.log(animal.age);
+
       let rand = Math.random();
 
-      let upper = rand + range;
-      let lower = rand - range;
+      let upper = 1;//rand + range;
+      let lower = 0;//rand - range;
       let _randomBatchPromise;
 
       if (upper > 1) {
@@ -158,7 +162,7 @@ export class AnimalProvider {
               {_id: {$nin: answeredIds}},
               {random: {$gte: lower}},
               {random: {$lte: upper}},
-              // lookingfor: {$elemMatch: animal.gender},
+              // // lookingfor: {$elemMatch: animal.gender},
               {gender: {$in: animal.lookingfor}},
               {age: {$gte: animal.minAge}},
               {age: {$lte: animal.maxAge}},

@@ -22,14 +22,13 @@ export class ConversationPage {
   id:any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, aniProv:AnimalProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     console.log("constructor loading");
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
     this.data.type = 'message';
     this.id = this.navParams.get('id');
-    // this.data.nickname = this.nickname;
-    this.data.nickname = this.aniProv.findAnimalById(this.id);
+    this.data.nickname = this.nickname;
     console.log(this.roomkey);
     console.log(this.nickname);
     console.log(this.data.type);

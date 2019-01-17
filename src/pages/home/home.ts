@@ -50,6 +50,7 @@ export class HomePage {
     let randomBatchPromise = this.aniProv.getAnimalRandomBatch(this.id, seenIdsPromise, this.matches, range, this.animal);
 
     randomBatchPromise.then((result:any) => {
+      console.log(result.docs);
       if(result.docs.length > 0) {
         for(let animal of result.docs) {
           let found = false;
@@ -72,6 +73,7 @@ export class HomePage {
   }
 
   getAnimalsOneByOneName(){
+    // console.log(this.unseenAnimals.length);
     if (this.unseenAnimals.length != 0) {
       return this.unseenAnimals[0].name + ", [" + this.unseenAnimals[0].age + "]";
     }
