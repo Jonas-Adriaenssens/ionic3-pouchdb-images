@@ -14,7 +14,7 @@ export class AnimalProvider {
 
   createPouchDB() {
     this.pdb = new PouchDB('animals');
-    this.remote = 'http://192.168.0.209:5984/animals';
+    this.remote = 'http://localhost:5984/animals';
 
     let options = {
       live: true,

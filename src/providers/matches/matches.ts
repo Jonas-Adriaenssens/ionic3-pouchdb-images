@@ -21,7 +21,7 @@ export class MatchProvider {
 
   createPouchDB() {
     this.pdb = new PouchDB('matches');
-    this.remote = 'http://192.168.0.209:5984/animals';
+    this.remote = 'http://localhost:5984/matches';
 
     let options = {
       live: true,
