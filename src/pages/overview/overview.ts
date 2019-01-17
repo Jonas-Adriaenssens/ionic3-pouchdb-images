@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import {DateTime, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {SettingsPage} from "../settings/settings";
 import {EditinfoPage} from "../editinfo/editinfo";
-import {ProfilePage} from "../profile/profile";
-import {normalizeURL} from "ionic-angular";
 import {AnimalProvider} from "../../providers/animals/animals";
 import {Camera, CameraOptions} from "@ionic-native/camera";
 
@@ -24,7 +22,6 @@ export class OverviewPage {
   date: any = new Date();
   id:any;
   animal:any;
-  imgName;
   imgData;
   type;
   data;
@@ -121,18 +118,6 @@ export class OverviewPage {
       this.type = data[0].split(';')[0];
 
 
-      /*
-
-      this.animal._attachments["camera-"+this.date] = {"content_type": "image/jpeg", "data": this.myPhoto};
-      this.aniProv.update(this.animal).then(() => {
-        let p = new Promise(resolve => setTimeout(resolve, 2000));
-        p.then(() => {
-          this.navCtrl.setRoot(this.overviewpage, {id: this.id});
-        });
-      });
-
-*/
-
 
         this.animal._attachments["camera"] = {"content_type": this.type, "data": this.imgData};
         this.aniProv.update(this.animal).then(() => {
@@ -141,15 +126,6 @@ export class OverviewPage {
             this.navCtrl.setRoot(this.overviewpage, {id: this.id});
           });
         });
-
-
-
-
-
-
-
-    }, (err) => {
-      // Handle error
     });
 
 

@@ -61,7 +61,6 @@ export class HomePage {
 
           if(!found) {
             this.unseenAnimals.push(animal);
-            // this.getAnimalPictureSlide();
             this.getAnimalOneByOnePicture();
           }
         }
@@ -105,7 +104,7 @@ export class HomePage {
   }
 
   goToChat(){
-    this.navCtrl.setRoot(this.chatPage, {id:this.id , nickname: this.id});
+    this.navCtrl.setRoot(this.chatPage, {id: this.id , nickname: this.id});
   }
 
   goToOverview(){

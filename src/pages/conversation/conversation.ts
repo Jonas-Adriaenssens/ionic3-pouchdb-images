@@ -1,9 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {Content, IonicPage, NavController, NavParams} from 'ionic-angular';
-import {HomePage} from "../home/home";
-import {EmployeePage} from "../employee/employee";
 import {ChatPage} from '../chat/chat';
 import * as firebase from 'Firebase';
+import {AnimalProvider} from "../../providers/animals/animals";
 
 
 @IonicPage()
@@ -23,13 +22,14 @@ export class ConversationPage {
   id:any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, aniProv:AnimalProvider) {
     console.log("constructor loading");
     this.roomkey = this.navParams.get("key") as string;
     this.nickname = this.navParams.get("nickname") as string;
     this.data.type = 'message';
-    this.data.nickname = this.nickname;
     this.id = this.navParams.get('id');
+    // this.data.nickname = this.nickname;
+    this.data.nickname = this.aniProv.findAnimalById(this.id);
     console.log(this.roomkey);
     console.log(this.nickname);
     console.log(this.data.type);
@@ -81,31 +81,6 @@ export class ConversationPage {
       id: this.id
     });
   }
-
-
-
-  // chatpage=ChatPage;
-  //
-  // data = { roomname:'' };
-  // ref = firebase.database().ref('chatrooms/');
-  //
-  //
-  // constructor(
-  //   public navCtrl: NavController,
-  // ) {}
-  //
-  // returnToChat(){
-  //   this.navCtrl.setRoot(ChatPage);
-  // }
-  //
-  //
-  // addRoom() {
-  //   let newData = this.ref.push();
-  //   newData.set({
-  //     roomname:this.data.roomname
-  //   });
-  //   this.navCtrl.pop();
-  // }
 
 
 

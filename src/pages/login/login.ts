@@ -1,10 +1,8 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, ModalController} from 'ionic-angular';
+import {IonicPage, NavController} from 'ionic-angular';
 import {AnimalProvider} from "../../providers/animals/animals";
 import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
-import {ChatPage} from "../chat/chat";
-import {ConversationPage} from "../conversation/conversation";
 
 
 @IonicPage()

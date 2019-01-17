@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import {OverviewPage} from "../overview/overview";
 import {AnimalProvider} from "../../providers/animals/animals";
 import {MatchProvider} from "../../providers/matches/matches";
 import {HomePage} from "../home/home";

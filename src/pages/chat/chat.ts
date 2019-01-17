@@ -1,15 +1,11 @@
 import {Component, ViewChild} from '@angular/core';
 import {IonicPage, NavController, ModalController, NavParams, Content} from 'ionic-angular';
 import {HomePage} from "../home/home";
-import { EmployeeProvider } from './../../providers/employee/employee';
 import {MatchProvider} from "../../providers/matches/matches";
 import {AnimalProvider} from "../../providers/animals/animals";
 import * as firebase from 'Firebase';
 import {AddroomPage} from "../addroom/addroom";
 import {ConversationPage} from "../conversation/conversation";
-import {OverviewPage} from "../overview/overview";
-import {ProfilePage} from "../profile/profile";
-
 
 
 
@@ -78,9 +74,6 @@ export class ChatPage {
     this.navCtrl.setRoot(this.homepage, {id: this.id, nickname: this.id});
   }
 
-  // GoToConversation() {
-  //   this.navCtrl.setRoot(this.homepage);
-  // }
 
   joinRoom(key) {
     console.log("key :");

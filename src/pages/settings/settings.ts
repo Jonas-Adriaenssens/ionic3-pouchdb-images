@@ -97,11 +97,15 @@ export class SettingsPage {
       this.animal.lookingfor = this.lookingfor;
       this.animal.minAge = Number(this.minAge);
       this.animal.maxAge = Number(this.maxAge);
-      this.aniProv.update(this.animal);
+      this.aniProv.update(this.animal).then(() => {
+        let p = new Promise(resolve => setTimeout(resolve, 2000));
+        p.then(() => {
+          this.refreshPage();
+        });
+    // }
+    // this.refreshPage();
+      })
     }
-
-
-    this.refreshPage();
   }
 
   refreshPage(){

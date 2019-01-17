@@ -3,8 +3,6 @@ import 'rxjs/add/operator/map';
 import PouchDB from 'pouchdb';
 import PouchDBFind from 'pouchdb-find';
 import {HttpClient} from "@angular/common/http";
-import {selector} from "rxjs/operator/publish";
-import {AnimalProvider} from "../animals/animals";
 
 
 @Injectable()
